@@ -1,0 +1,228 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>Registration Form</h1>
+  <!-- <h1>
+
+    Welcome to {{ title }}!
+  </h1>
+  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+<h2>Here are some links to help you start: </h2>
+<ul>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+  </li>
+</ul> -->
+<form class="all" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  <table align="center"><br><br>
+    <tr>
+      <td>FullName</td>
+      <td>DOB</td>
+    </tr>
+      
+      <tr>
+      <td><div><input type="text" id="name" name="name" class="form-control"
+        required minlength="4" appForbiddenName="bob"
+        [(ngModel)]="data.name" #name="ngModel"/></div>
+        <div class="form-group">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                class="alert-danger">
+              <div *ngIf="name.errors.required">
+                Name is required.
+              </div>
+              <div *ngIf="name.errors.minlength">
+                Name must be at least 4 characters long.
+              </div>
+              <div *ngIf="name.errors.forbiddenName">
+                Name cannot be Bob.
+              </div>
+            </div>
+            </div>
+      </td>
+      <td><div><input type="date" id="db" name="db" class="form-control"
+        required
+        [(ngModel)]="data.db" #db="ngModel"/></div>
+        <div class="form-group">
+            <div *ngIf="db.invalid && (db.dirty || db.touched)"
+                class="alert alert-danger">
+              <div *ngIf="db.errors.required">
+                DOB is required.
+              </div>
+              <!-- <div *ngIf="db.errors.minlength">
+                DOB must be at least 4 characters long.
+              </div> -->
+              <!-- <div *ngIf="db.errors.forbiddenName">
+                 cannot be Bob.
+              </div> -->
+            </div>
+            </div></td>
+    </tr>
+    <br>
+    <tr>
+      <td>EmailAddress</td>
+      <td>Phone Number</td>
+    </tr>
+
+    <tr>
+      <td>
+        <div><input id="email" name="email" class="form-control"
+         required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          [(ngModel)]="data.email" #email="ngModel"/></div>
+          <div class="form-group">
+              <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                  class="alert alert-danger">
+                  
+                <div *ngIf="email.errors.required">
+                  Email-Id is required.
+                </div>
+                <div *ngIf="email.errors.pattern">
+                    In-valid email
+
+                </div>
+                <!-- <div *ngIf="email.errors.minlength">
+                  Name must be at least 4 characters long.
+                </div> -->
+                <!-- <div *ngIf="name.errors.forbiddenName">
+                  Name cannot be Bob.
+                </div> -->
+              </div>
+              </div></td>
+
+
+
+              <td><div><input type="text" id="pno" name="pno" class="form-control"
+                required minlength="10" 
+                [(ngModel)]="data.pno" #pno="ngModel"/></div>
+                <div class="form-group">
+                    <div *ngIf="pno.invalid && (pno.dirty || pno.touched)"
+                        class="alert alert-danger">
+                      <div *ngIf="pno.errors.required">
+                        Phone Number is required.
+                      </div>
+                      <div *ngIf="pno.errors.minlength">
+                        Phone Number must be at least 10 characters long.
+                      </div>
+                      <!-- <div *ngIf="pno.errors.forbiddenName">
+                        Name cannot be Bob.
+                      </div> -->
+                    </div>
+                    </div></td>
+    </tr>
+
+    <br>
+    <tr>
+      <td>Password</td>
+      <td>Tell me about yourself</td>
+    </tr>
+    <tr>
+      <td><div><input type="password" id="pswrd" name="pswrd" class="form-control"
+        required minlength="8" 
+        [(ngModel)]="data.pswrd" #pswrd="ngModel"/></div>
+        <div class="form-group">
+            <div *ngIf="pswrd.invalid && (pswrd.dirty || pswrd.touched)"
+                class="alert alert-danger">
+              <div *ngIf="pswrd.errors.required">
+                Password is required.
+              </div>
+              <div *ngIf="pswrd.errors.minlength">
+                Password must be at least 8 characters long.
+              </div>
+              <!-- <div *ngIf="name.errors.forbiddenName">
+                Name cannot be Bob.
+              </div> -->
+            </div>
+            </div></td>
+            <td><div><textarea id="telm" name="telm" class="form-control"
+              required 
+              [(ngModel)]="data.telm" #telm="ngModel"></textarea></div>
+              <div class="form-group">
+                  <div *ngIf="telm.invalid && (telm.dirty || telm.touched)"
+                      class="alert alert-danger">
+                    <div *ngIf="telm.errors.required">
+                      Text field is required.
+                    </div>
+                    <!-- <div *ngIf="name.errors.minlength">
+                      Name must be at least 4 characters long.
+                    </div>
+                    <div *ngIf="name.errors.forbiddenName">
+                      Name cannot be Bob.
+                    </div> -->
+                  </div>
+                  </div>
+                
+                </td>
+    </tr>
+    <br>
+    <tr>
+        <td>Select your state
+        <select  id="slct" name="slct" class="form-control"
+        required 
+        [(ngModel)]="data.slct" #slct="ngModel">
+         
+          <option value="Tel">Telangana</option>
+          <option value="Visakha">Visakha</option>
+          <option value="Vizianagaram">Vizianagaram</option>
+        </select>
+        <div class="form-group">
+            <div *ngIf="slct.invalid && (slct.dirty || slct.touched)"
+                class="alert-danger">
+              <div *ngIf="slct.errors.required">
+                Field is required.
+              </div>
+              <!-- <div *ngIf="name.errors.minlength">
+                Name must be at least 4 characters long.
+              </div>
+              <div *ngIf="name.errors.forbiddenName">
+                Name cannot be Bob.
+              </div> -->
+            </div>
+            </div> 
+          </td>         
+
+
+  <td>
+    <div class="form-group">
+      <input type="radio" id="radio" value="male" name="gender" class="form-control"  required   
+    [(ngModel)]="data.radio" #radio="ngModel"/>Male
+           
+        <input type="radio" id="radio" value="female" name="gender" class="form-control"
+          required 
+          [(ngModel)]="data.radio" #radio="ngModel"/>Female</div>
+         </td>
+</tr> 
+
+        
+        <tr></tr>
+        
+
+  </table>
+  <br>
+ <div><input type="checkbox" id="check" name="check" class="form-control"
+        required 
+        [(ngModel)]="data.check" #check="ngModel"/>I have read all the<a href="Terms and Conditions">Terms and Conditions</a>.</div><br>
+        <div class="form-group">
+            <div *ngIf="radio.invalid && (radio.touched)"
+                class="alert-danger">
+              <div *ngIf="radio.errors.required">
+                  Select your gender.
+              </div>
+              <!-- <div *ngIf="name.errors.minlength">
+                Name must be at least 4 characters long.
+              </div>
+              <div *ngIf="name.errors.forbiddenName">
+                Name cannot be Bob.
+              </div> -->
+            </div>
+            </div>
+            <input type="checkbox" >Interested in Notifications from this Website?<br><br>
+            <button class="btn" [disabled]="f.form.pristine || f.form.invalid">Register</button>
+</form>
+</div>
+
+<router-outlet></router-outlet>
